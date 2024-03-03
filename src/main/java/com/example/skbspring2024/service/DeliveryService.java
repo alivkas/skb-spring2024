@@ -19,12 +19,6 @@ public class DeliveryService {
     Shop shop;
     Brokenable product;
     Brokenable brokenProduct;
-    ReceiptService receiptService;
-
-    public void order() {
-        receiptService.receipt();
-        log.info("{} has ordered", product);
-    }
 
     @PostConstruct
     public void init() {

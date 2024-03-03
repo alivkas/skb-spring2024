@@ -1,18 +1,23 @@
 package com.example.skbspring2024.service;
 
+import com.example.skbspring2024.interfaces.Brokenable;
 import com.example.skbspring2024.service.common.Product;
 import com.example.skbspring2024.service.common.Shop;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Log4j2
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ReceiptService {
     Shop shop;
-    Product product;
+    Brokenable product;
+    Brokenable brokenProduct;
 
     @Autowired
     public void setShop(Shop shop) {
@@ -20,13 +25,13 @@ public class ReceiptService {
     }
 
     @Autowired
-    public void setProduct(Product product) {
+    public void setProduct(Brokenable product) {
         this.product = product;
     }
 
-    public void receipt() {
-        shop.addProduct(product);
-        log.info("{} receipt", product);
+    @Autowired
+    public void setBrokenProduct(Brokenable brokenProduct) {
+        this.brokenProduct = brokenProduct;
     }
 
     @PostConstruct

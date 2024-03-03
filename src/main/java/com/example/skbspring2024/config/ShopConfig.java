@@ -1,5 +1,6 @@
 package com.example.skbspring2024.config;
 
+import com.example.skbspring2024.interfaces.Brokenable;
 import com.example.skbspring2024.service.common.BrokenProduct;
 import com.example.skbspring2024.service.common.Product;
 import com.example.skbspring2024.service.common.Shop;
@@ -12,20 +13,17 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class ShopConfig {
     @Bean
-    @Scope(value = "singleton")
     public Shop shop() {
         return new Shop();
     }
 
     @Bean
-    @Scope(value = "singleton")
-    public Product product() {
+    public Brokenable product() {
         return new Product();
     }
 
     @Bean
-    @Scope(value = "singleton")
-    public BrokenProduct brokenProduct() {
+    public Brokenable brokenProduct() {
         return new BrokenProduct();
     }
 }

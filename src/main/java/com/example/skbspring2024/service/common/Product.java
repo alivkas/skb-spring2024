@@ -2,21 +2,13 @@ package com.example.skbspring2024.service.common;
 
 import com.example.skbspring2024.interfaces.Brokenable;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@ToString
 public class Product implements Brokenable {
-    private String name;
-    private int id;
-
-    @Override
-    public boolean isBroken() {
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
+    String name;
+    @ToString.Exclude int id;
 }

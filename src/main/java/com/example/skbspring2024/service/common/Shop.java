@@ -1,19 +1,13 @@
 package com.example.skbspring2024.service.common;
 
 import com.example.skbspring2024.interfaces.Brokenable;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class Shop {
-    private List<Brokenable> productList = new ArrayList<>();
-
-    public void addProduct(Product product) {
-        productList.add(product);
-    }
-
-    public void deleteProduct(Product product) {
-        int index = product.getId();
-        productList.remove(index);
-    }
+    List<Brokenable> productList = new ArrayList<>();
 }
