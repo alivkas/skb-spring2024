@@ -10,11 +10,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-@RequiredArgsConstructor
 public class HeaderRequestController {
 
     @GetMapping("/headers")
-    public Map<String, String> getCars(@RequestHeader Map<String, String> headers) {
+    public Map<String, String> getHeaders(@RequestHeader Map<String, String> headers) {
         return headers;
     }
 }
