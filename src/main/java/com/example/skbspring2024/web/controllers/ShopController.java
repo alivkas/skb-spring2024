@@ -5,14 +5,15 @@ import com.example.skbspring2024.web.dto.Product;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Random;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 @RestController
-@RequestMapping("api/shop")
+@RequestMapping(value = "api/shop", produces = APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ShopController {

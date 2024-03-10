@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 @RestController
-@RequestMapping("/api")
+@RequestMapping(value = "/api", produces = APPLICATION_JSON_VALUE)
 public class HeaderRequestController {
 
     @GetMapping("/headers")
