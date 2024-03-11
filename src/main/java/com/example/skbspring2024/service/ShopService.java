@@ -33,10 +33,11 @@ public class ShopService {
     }
 
     public Product getProduct(int id) {
-        if (productList.get(id) == null) {
+        Product product = productList.get(id);
+        if (product == null) {
             throw new NotFoundException(id);
         }
-        return new Product(productList.get(id).getPrice(), productList.get(id).getInfo());
+        return new Product(product.getPrice(), product.getInfo());
     }
 
     public void deleteProduct(int id) {
