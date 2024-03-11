@@ -5,6 +5,7 @@ import com.example.skbspring2024.web.dto.ProductInfo;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Log4j2
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
@@ -30,7 +32,11 @@ public class ShopService {
     }
 
     public Product getProduct(int id) {
-        return new Product(productList.get(id).getPrice(), productList.get(id).getInfo());
+        Product product = new Product(productList.get(id).getPrice(), productList.get(id).getInfo());
+        if (product == null) {
+            throw new NullPointerException();
+        }
+        return product;
     }
 
     public void deleteProduct(int id) {
