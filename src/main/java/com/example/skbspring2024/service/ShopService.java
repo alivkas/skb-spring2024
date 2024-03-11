@@ -42,6 +42,9 @@ public class ShopService {
     }
 
     public void deleteProduct(int id) {
+        if (!productList.containsKey(id)) {
+            throw new NotFoundException(id);
+        }
         productList.remove(id);
     }
 }
