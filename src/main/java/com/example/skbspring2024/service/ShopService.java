@@ -36,7 +36,9 @@ public class ShopService {
         if (!productList.containsKey(id)) {
             throw new NotFoundException(id);
         }
-        return new Product(productList.get(id).getPrice(), productList.get(id).getInfo());
+
+        Product product = productList.get(id);
+        return new Product(product.getPrice(), product.getInfo());
     }
 
     public void deleteProduct(int id) {
