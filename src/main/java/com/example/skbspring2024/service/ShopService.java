@@ -2,6 +2,7 @@ package com.example.skbspring2024.service;
 
 import com.example.skbspring2024.web.dto.Product;
 import com.example.skbspring2024.web.dto.ProductInfo;
+import com.example.skbspring2024.web.errors.NotFoundException;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -32,11 +33,10 @@ public class ShopService {
     }
 
     public Product getProduct(int id) {
-        Product product = new Product(productList.get(id).getPrice(), productList.get(id).getInfo());
-        if (product == null) {
-            throw new NullPointerException();
+        if (!productList.containsKey(id)) {
+            throw new NotFoundException(id);
         }
-        return product;
+        return new Product(productList.get(id).getPrice(), productList.get(id).getInfo());
     }
 
     public void deleteProduct(int id) {
