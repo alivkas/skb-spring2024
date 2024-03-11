@@ -8,6 +8,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -21,24 +22,22 @@ public class ShopController {
 
     @PostMapping("/product")
     public Product addProduct(@RequestBody Product product) {
-        int id = new Random().nextInt(0, 1000);
-        product.info().setId(id);
         shopService.createProduct(product);
         return product;
     }
 
     @GetMapping("/product")
-    public List<Product> getProducts() {
+    public Map<Integer, Product> getProducts() {
         return shopService.getProducts();
     }
 
-    @GetMapping("/product/{index}")
-    public Product getProduct(@PathVariable int index) {
-        return shopService.getProduct(index);
+    @GetMapping("/product/{id}")
+    public Product getProduct(@PathVariable int id) {
+        return shopService.getProduct(id);
     }
 
-    @DeleteMapping("/product/{index}")
-    public void deleteProduct(@PathVariable int index) {
-        shopService.deleteProduct(index);
+    @DeleteMapping("/product/{id}")
+    public void deleteProduct(@PathVariable int id) {
+        shopService.deleteProduct(id);
     }
 }
