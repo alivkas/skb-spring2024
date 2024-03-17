@@ -1,7 +1,9 @@
 package com.example.skbspring2024.web.errors;
 
 import jakarta.validation.ConstraintViolationException;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,9 +14,10 @@ import java.util.List;
 
 @RestControllerAdvice
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CommonAdvice {
 
-    private final static String VALIDATION_ERROR = "validation_error";
+    String VALIDATION_ERROR = "validation_error";
 
     @ExceptionHandler
     public ErrorResponse handleNotFoundException(NotFoundError ex) {
