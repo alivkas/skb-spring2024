@@ -1,0 +1,6 @@
+shop:
+  name: "Food Market PROD"
+  products:
+    - "Meat"
+    - "Milk"
+  env: ${ENV_SHOP}
