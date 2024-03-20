@@ -4,4 +4,4 @@ shop:
     - "Apple"
     - "Banana"
     - "Bread"
-  env: ${ENV_SHOP}
+  env: ${EXAMPLE_TEST:custom_value}

@@ -3,4 +3,4 @@ shop:
   products:
     - "Meat"
     - "Milk"
-  env: ${ENV_SHOP}
+  env: ${EXAMPLE_TEST:custom_value}

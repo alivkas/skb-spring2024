@@ -41,7 +41,8 @@ public class ShopPropertiesConditionalConfiguration {
     }
 
     @Bean
-    @ConditionalOnProperty(name = "EXAMPLE_TEST", havingValue = "default", matchIfMissing = true)
+    @Profile(DEV)
+    @ConditionalOnProperty(name = "env", havingValue = "default", matchIfMissing = true)
     public ResponseEntity<String> beanWithoutDefaultEnvVal() {
         log.info("env not default");
         return ResponseEntity.ok("ok");
