@@ -1,0 +1,7 @@
+shop:
+  name: "Food Market DEV"
+  products:
+    - "Apple"
+    - "Banana"
+    - "Bread"
+  env: ${ENV_SHOP}
