@@ -1,1 +1,1 @@
-env: ${EXAMPLE_TEST}
+env: ${EXAMPLE_TEST:custom_value}
