@@ -6,7 +6,6 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -37,20 +36,5 @@ public class ProductService {
 
     public void deleteProduct(String name) {
         productList.removeIf(x -> name.equals(x.name()));
-    }
-
-    public boolean isSame(Product product) throws NoSuchFieldException, IllegalAccessException {
-        for (Product p : productList) {
-            Field field = Product.class.getDeclaredField("name");
-            field.setAccessible(true);
-
-            String productName = (String) field.get(product);
-            String serviceProductName = (String) field.get(p);
-
-            if (productName != null && productName.equals(serviceProductName)) {
-                return false;
-            }
-        }
-        return true;
     }
 }

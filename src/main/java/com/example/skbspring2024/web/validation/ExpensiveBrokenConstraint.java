@@ -10,10 +10,10 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Constraint(validatedBy = SameNamesValidator.class)
-public @interface SameNamesConstraint {
+@Constraint(validatedBy = ExpensiveBrokenValidator.class)
+public @interface ExpensiveBrokenConstraint {
 
-    String message() default "{product.samenames.not_valid}";
+    String message() default "{product.expensive_broken.not_valid}";
 
     Class<?>[] groups() default  {};
 
