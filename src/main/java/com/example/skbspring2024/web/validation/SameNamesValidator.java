@@ -26,18 +26,6 @@ public class SameNamesValidator implements ConstraintValidator<SameNamesConstrai
     @SneakyThrows
     @Override
     public boolean isValid(Product product, ConstraintValidatorContext constraintValidatorContext) {
-        List<Product> products = productService.getProducts();
-        for (Product p : products) {
-            Field field = Product.class.getDeclaredField("name");
-            field.setAccessible(true);
-
-            String productName = (String) field.get(product);
-            String serviceProductName = (String) field.get(p);
-
-            if (productName != null && productName.equals(serviceProductName)) {
-                return false;
-            }
-        }
-        return true;
+        return productService.isSame(product);
     }
 }

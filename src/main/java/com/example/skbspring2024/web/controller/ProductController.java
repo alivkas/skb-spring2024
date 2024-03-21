@@ -1,6 +1,8 @@
 package com.example.skbspring2024.web.controller;
 
+import com.example.skbspring2024.web.dto.Message;
 import com.example.skbspring2024.web.dto.Product;
+import com.example.skbspring2024.web.service.MessageService;
 import com.example.skbspring2024.web.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
@@ -22,11 +24,12 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class ProductController {
 
     ProductService productService;
+    MessageService messageService;
 
     @PostMapping("/product")
-    public ResponseEntity<String> addProduct(@Valid @RequestBody Product product) {
+    public Message addProduct(@Valid @RequestBody Product product) {
         productService.addProduct(product);
-        return ResponseEntity.ok("Product " + product.name() + " created");
+        return messageService.getCreateMessage(product.name());
     }
 
     @GetMapping("/product")
@@ -40,8 +43,8 @@ public class ProductController {
     }
 
     @DeleteMapping("/product/{name}")
-    public ResponseEntity<String> deleteProduct(@PathVariable String name) {
+    public Message deleteProduct(@PathVariable String name) {
         productService.deleteProduct(name);
-        return ResponseEntity.ok("Product " + name + " deleted");
+        return messageService.getDeleteMessage(name);
     }
 }
