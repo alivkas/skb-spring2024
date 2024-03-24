@@ -11,6 +11,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Entity
 @Table(name = "todo_list", schema = "public")
@@ -24,5 +25,5 @@ public class TodoListEntity extends BaseEntity {
     String name;
 
     @OneToMany(mappedBy = "todoList", cascade = CascadeType.ALL)
-    List<EventEntity> events = new ArrayList<>();
+    List<EventEntity> events = new CopyOnWriteArrayList<>();
 }

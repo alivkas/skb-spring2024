@@ -14,7 +14,7 @@ import lombok.experimental.FieldNameConstants;
 public abstract class BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnore
     Long id;
 }

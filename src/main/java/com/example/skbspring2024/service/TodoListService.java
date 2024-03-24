@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
 @Transactional
@@ -37,7 +38,7 @@ public class TodoListService {
     }
 
     public List<TodoListRequest> getTodoLists() {
-        List<TodoListRequest> result = new ArrayList<>();
+        List<TodoListRequest> result = new CopyOnWriteArrayList<>();
         for (TodoListEntity todo : todoListRepository.findAll()) {
             result.add(new TodoListRequest(todo));
         }
