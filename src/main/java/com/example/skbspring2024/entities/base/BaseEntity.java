@@ -10,11 +10,11 @@ import lombok.experimental.FieldNameConstants;
 @MappedSuperclass
 @FieldDefaults(level = AccessLevel.PROTECTED)
 @Getter
-@FieldNameConstants(innerTypeName = "BaseFields")
 public abstract class BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+    @SequenceGenerator(name = "hibernate_sequence", allocationSize = 1)
     @JsonIgnore
     Long id;
 }

@@ -9,19 +9,18 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-public class TodoListRequest {
+public class TodoListUserData {
     String name;
     List<String> events;
 
-    public TodoListRequest(TodoListEntity todo) {
+    public TodoListUserData(TodoListEntity todo) {
         this.name = todo.getName();
         List<EventEntity> events = todo.getEvents();
-        List<String> result = new CopyOnWriteArrayList<>();
+        List<String> result = new ArrayList<>();
 
         for (EventEntity e : events) {
             result.add(e.getName());

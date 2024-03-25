@@ -1,9 +1,8 @@
 package com.example.skbspring2024.service;
 
-import com.example.skbspring2024.common.TodoListRequest;
+import com.example.skbspring2024.common.TodoListUserData;
 import com.example.skbspring2024.entities.EventEntity;
 import com.example.skbspring2024.entities.TodoListEntity;
-import com.example.skbspring2024.repositories.EventRepository;
 import com.example.skbspring2024.repositories.TodoListRepository;
 import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
 @Transactional
@@ -23,11 +21,11 @@ public class TodoListService {
 
     TodoListRepository todoListRepository;
 
-    public void createTodoList(TodoListRequest request) {
+    public void createTodoList(TodoListUserData userData) {
         TodoListEntity todo = new TodoListEntity();
-        todo.setName(request.getName());
+        todo.setName(userData.getName());
 
-        for (String eventName : request.getEvents()) {
+        for (String eventName : userData.getEvents()) {
             EventEntity event = new EventEntity();
             event.setName(eventName);
             event.setTodoList(todo);
@@ -37,10 +35,10 @@ public class TodoListService {
         todoListRepository.save(todo);
     }
 
-    public List<TodoListRequest> getTodoLists() {
-        List<TodoListRequest> result = new CopyOnWriteArrayList<>();
+    public List<TodoListUserData> getTodoLists() {
+        List<TodoListUserData> result = new ArrayList<>();
         for (TodoListEntity todo : todoListRepository.findAll()) {
-            result.add(new TodoListRequest(todo));
+            result.add(new TodoListUserData(todo));
         }
 
         return result;
