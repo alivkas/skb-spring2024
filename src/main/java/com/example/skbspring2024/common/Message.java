@@ -1,4 +1,4 @@
-package com.example.skbspring2024.dto;
+package com.example.skbspring2024.common;
 
 import lombok.AccessLevel;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.example.skbspring2024.controllers;
 
 import com.example.skbspring2024.common.TodoListUserData;
-import com.example.skbspring2024.dto.Message;
+import com.example.skbspring2024.common.Message;
 import com.example.skbspring2024.service.TodoListService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
