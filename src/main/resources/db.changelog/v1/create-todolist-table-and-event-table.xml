@@ -5,7 +5,11 @@
 
     <changeSet id="create-todolist-table-and-event-table" author="ElovskikhMM">
 
-        <createSequence sequenceName="hibernate_sequence" incrementBy="1"/>
+        <createSequence sequenceName="todo_list_seq"
+                        incrementBy="50"/>
+
+        <createSequence sequenceName="event_seq"
+                        incrementBy="50"/>
         
         <createTable tableName="todo_list">
 
@@ -38,5 +42,7 @@
         </createTable>
 
     </changeSet>
+    
+    
 
 </databaseChangeLog>
